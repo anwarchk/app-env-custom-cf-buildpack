@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "Custom CF Build pack for App lib Env set up"
+exit 1

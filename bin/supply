@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo "Setting up Application API Libs"
+
+DEPS_DIR=$3
+
+DEPS_IDX=$4
+
+DOWNLOAD_DIR=$DEPS_DIR/$DEPS_IDX
+
+echo "name: app-env-custom-cf-buildpack" > $DOWNLOAD_DIR/config.yml
+
+echo "config : {}" >> $DOWNLOAD_DIR/config.yml
+
+cat $DOWNLOAD_DIR/config.yml
+
+LIB_DIR=$DOWNLOAD_DIR/lib
+
+mkdir $LIB_DIR
+
+curl -u $NEXUS_USERNAME:$NEXUS_PASSWORD -s -L --retry 15 --retry-delay 2 $URL -o $LIB_DIR/api-lib.zip
+
+unzip $LIB_DIR/api.zip -d $LIB_DIRss
+
+rm -rf $$LIB_DIR/api.zip
